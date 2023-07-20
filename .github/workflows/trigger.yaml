@@ -31,5 +31,5 @@ jobs:
           SNOWFLAKE_SCHEMA: 'DATA_OPS'  # Replace with your Snowflake schema name
 
         run: |
-          snowsql -a $SNOWFLAKE_ACCOUNT -u $SNOWFLAKE_USER -p $SNOWFLAKE_PASSWORD -w $SNOWFLAKE_WAREHOUSE -d $SNOWFLAKE_DATABASE -s $SNOWFLAKE_SCHEMA -f snowflake_script.sql
-          # python create_table.py
+          # snowsql -a $SNOWFLAKE_ACCOUNT -u $SNOWFLAKE_USER -p $SNOWFLAKE_PASSWORD -w $SNOWFLAKE_WAREHOUSE -d $SNOWFLAKE_DATABASE -s $SNOWFLAKE_SCHEMA -f snowflake_script.sql
+          python create_table.py
