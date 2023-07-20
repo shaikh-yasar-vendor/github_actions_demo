@@ -1,12 +1,12 @@
 import snowflake.connector
 import os
 # Snowflake connection details
-account = os.environ.get("account")
-user = os.environ.get("user")
-password = os.environ.get("password")
-warehouse = os.environ.get("warehouse")
-database = os.environ.get("database")
-schema = os.environ.get("schema")
+account = os.environ.get("SNOWFLAKE_ACCOUNT")
+user = os.environ.get("SNOWFLAKE_USER")
+password = os.environ.get("SNOWFLAKE_PASSWORD")
+warehouse = os.environ.get("SNOWFLAKE_WAREHOUSE")
+database = os.environ.get("SNOWFLAKE_DATABASE")
+schema = os.environ.get("SNOWFLAKE_SCHEMA")
 
 # Table details
 # table_name = "demo_table"
