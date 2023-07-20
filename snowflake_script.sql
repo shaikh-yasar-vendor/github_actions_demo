@@ -1,0 +1,1 @@
+INSERT INTO TABLE 'DW_DEV'.'DATA_OPS'.'DEMO' (first_name, last_name, age) VALUES ('shaikh','yasar',27);
