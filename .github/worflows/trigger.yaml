@@ -3,7 +3,7 @@ name: Create Snowflake Table
 on:
   push:
     branches:
-      - main  # Change this to the main branch name of your repository
+      - my_branch  # Change this to the main branch name of your repository
 
 jobs:
   create_table:
