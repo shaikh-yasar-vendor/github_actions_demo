@@ -22,7 +22,7 @@ conn = snowflake.connector.connect(
 
 # Create the table
 query = f"""
-INSERT INTO TABLE DW_DEV.DATA_OPS.DEMO (first_name, last_name, age) VALUES ('shaikh','yasar',27);
+INSERT INTO DW_DEV.DATA_OPS.DEMO (first_name, last_name, age) VALUES ('shaikh','yasar',27);
 """
 cursor = conn.cursor()
 cursor.execute(query)
