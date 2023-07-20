@@ -22,7 +22,7 @@ conn = snowflake.connector.connect(
 
 # Create the table
 query = f"""
-GRANT privilege(s) ON TABLE DW_DEV.DATA_OPS.SNOWFLAKE_TABLE_DETAILS TO ROLE NON_PROD_DEVELOPER
+GRANT privilege ON TABLE DW_DEV.DATA_OPS.SNOWFLAKE_TABLE_DETAILS TO ROLE NON_PROD_DEVELOPER
 """
 cursor = conn.cursor()
 cursor.execute(query)
