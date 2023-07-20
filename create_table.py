@@ -17,8 +17,7 @@ conn = snowflake.connector.connect(
     password=password,
     account=account,
     warehouse=warehouse,
-    database=database,
-    schema=schema
+    database=database
 )
 
 # Create the table
