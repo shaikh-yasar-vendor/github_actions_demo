@@ -13,11 +13,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up SnowSQL
-        run: |
-          curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.15-linux_x86_64.bash
-          chmod +x snowsql-1.2.15-linux_x86_64.bash
-          sudo ./snowsql-1.2.15-linux_x86_64.bash
+      # - name: Set up SnowSQL
+      #   run: |
+      #     curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.15-linux_x86_64.bash
+      #     chmod +x snowsql-1.2.15-linux_x86_64.bash
+      #     sudo ./snowsql-1.2.15-linux_x86_64.bash
+      - name: Download SnowSQL
+        run:  curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.27-linux_x86_64.bash
+      - name: Install SnowSQL
+        run: SNOWSQL_DEST=~/snowflake SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.27-linux_x86_64.bash
+      - name: Test installation
+        run:  ~/snowflake/snowsql -v
 
       - name: Run Snowflake Script
         env:
