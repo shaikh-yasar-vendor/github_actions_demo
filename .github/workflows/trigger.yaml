@@ -23,7 +23,7 @@ jobs:
       - name: Install SnowSQL
         run: SNOWSQL_DEST=~ SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.27-linux_x86_64.bash
       - name: Test installation
-        run:  snowsql -v
+        run:  ~/snowsql -v
 
       - name: Run Snowflake Script
         env:
@@ -34,4 +34,4 @@ jobs:
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
           SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
         run: |
-          snowsql -a $SNOWFLAKE_ACCOUNT -u $SNOWFLAKE_USER -p $SNOWFLAKE_PASSWORD -w $SNOWFLAKE_WAREHOUSE -d $SNOWFLAKE_DATABASE -s $SNOWFLAKE_SCHEMA -f snowflake_script.sql
+          ~/snowsql -a $SNOWFLAKE_ACCOUNT -u $SNOWFLAKE_USER -p $SNOWFLAKE_PASSWORD -w $SNOWFLAKE_WAREHOUSE -d $SNOWFLAKE_DATABASE -s $SNOWFLAKE_SCHEMA -f snowflake_script.sql
