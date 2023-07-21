@@ -15,9 +15,9 @@ jobs:
 
       - name: Set up SnowSQL
         run: |
-          curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.27-linux_x86_64.bash
-          chmod +x snowsql-1.2.27-linux_x86_64.bash
-          sudo ./snowsql-1.2.27-linux_x86_64.bash
+          curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.15-linux_x86_64.bash
+          chmod +x snowsql-1.2.15-linux_x86_64.bash
+          sudo ./snowsql-1.2.15-linux_x86_64.bash
 
       - name: Run Snowflake Script
         env:
