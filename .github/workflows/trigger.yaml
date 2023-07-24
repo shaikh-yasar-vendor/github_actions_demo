@@ -3,7 +3,7 @@ name: Run Snowflake Script
 on:
   push:
     branches:
-      - my_branch_2
+      - github_action_branch
 
 jobs:
   run_snowflake_script:
@@ -13,11 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # - name: Set up SnowSQL
-      #   run: |
-      #     curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.15-linux_x86_64.bash
-      #     chmod +x snowsql-1.2.15-linux_x86_64.bash
-      #     sudo ./snowsql-1.2.15-linux_x86_64.bash
       - name: Download SnowSQL
         run:  curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.27-linux_x86_64.bash
       - name: Install SnowSQL
