@@ -3,7 +3,7 @@ name: Run Snowflake Script
 on:
   push:
     branches:
-      - github_action_branch
+      - my_branch_2
 
 jobs:
   run_snowflake_script:
