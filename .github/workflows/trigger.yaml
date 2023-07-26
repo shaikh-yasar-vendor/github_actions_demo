@@ -1,9 +1,7 @@
 name: Run Snowflake Script
 
 on:
-  push:
-    branches:
-      - my_branch_2
+  workflow_dispatch:
 
 jobs:
   run_snowflake_script:
