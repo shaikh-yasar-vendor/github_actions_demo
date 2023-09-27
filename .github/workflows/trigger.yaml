@@ -1,4 +1,4 @@
-name: Run Snowflake Script
+name: SQL Based Workflow
 
 on:
   push:
