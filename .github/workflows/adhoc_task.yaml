@@ -1,0 +1,50 @@
+name: Snowflake Adhoc Task
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'click_data_ops/adhoc_task/snowflake_adhoc_script.sql'
+
+jobs:
+  snowflake_adhoc_task:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if PR was merged
+        id: pr_merged
+        run: echo "PR_MERGED=true"
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+
+      - name: Check if File Was Changed
+        id: file_changed
+        run: echo "FILE_CHANGED=true"
+        if: steps.pr_merged.outputs.PR_MERGED == 'true'
+        
+      - name: Print PR Merge Status
+      run: echo "PR was merged: ${{ steps.pr_merged.outputs.PR_MERGED }}"
+
+      - name: Print File Change Status
+        run: echo "File was changed: ${{ steps.file_changed.outputs.FILE_CHANGED }}"
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Download SnowSQL
+        run:  curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.27-linux_x86_64.bash
+      - name: Install SnowSQL
+        run: SNOWSQL_DEST=~ SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.27-linux_x86_64.bash
+      - name: Test installation
+        run:  ~/snowsql -v
+
+      - name: Run Snowflake Script
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USERNAME: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWSQL_PWD: ${{ secrets.SNOWSQL_PWD }}
+          SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
+          SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
+        run: |
+          ~/snowsql -a $SNOWFLAKE_ACCOUNT -u $SNOWFLAKE_USERNAME -w $SNOWFLAKE_WAREHOUSE -d $SNOWFLAKE_DATABASE -s $SNOWFLAKE_SCHEMA -f click_data_ops/adhoc_task/snowflake_adhoc_script.sql
