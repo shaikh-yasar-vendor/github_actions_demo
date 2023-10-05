@@ -21,9 +21,9 @@ jobs:
         id: file_changed
         run: echo "FILE_CHANGED=true"
         if: steps.pr_merged.outputs.PR_MERGED == 'true'
-        
+
       - name: Print PR Merge Status
-      run: echo "PR was merged: ${{ steps.pr_merged.outputs.PR_MERGED }}"
+        run: echo "PR was merged: ${{ steps.pr_merged.outputs.PR_MERGED }}"
 
       - name: Print File Change Status
         run: echo "File was changed: ${{ steps.file_changed.outputs.FILE_CHANGED }}"
